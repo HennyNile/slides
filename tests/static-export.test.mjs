@@ -20,9 +20,9 @@ test("exports a complete static presentation for GitHub Pages", async () => {
   const html = await readFile(indexUrl, "utf8");
 
   assert.match(html, /<html lang="zh-CN">/i);
-  assert.match(html, /<title>如何读懂并讲清一篇计算机论文<\/title>/i);
+  assert.match(html, /<title>如何读懂一篇计算机论文<\/title>/i);
   assert.match(html, /网页演示版/);
-  assert.match(html, /顶会 Best Paper 阅读方法与 50 分钟报告设计/);
+  assert.match(html, /为什么读、按需求选择读法，以及如何精读/);
   assert.doesNotMatch(html, /codex-preview|openai\/hosting|react-loading-skeleton/i);
 
   await access(new URL("out/og-paper-reading.png", root));
@@ -30,6 +30,8 @@ test("exports a complete static presentation for GitHub Pages", async () => {
 
   const scripts = await collectJavaScript(new URL("out/_next/", root));
   const source = (await Promise.all(scripts.map((file) => readFile(file, "utf8")))).join("\n");
+  assert.match(source, /先定义阅读任务，再打开 PDF/);
+  assert.match(source, /精读的核心：重建完整论证/);
   assert.match(source, /ArrowRight/);
   assert.match(source, /requestFullscreen/);
   assert.match(source, /slide-/);

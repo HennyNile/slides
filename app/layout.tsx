@@ -12,11 +12,11 @@ const metadataBase = process.env.GITHUB_ACTIONS === "true" && repositoryOwner &&
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "如何读懂并讲清一篇计算机论文",
-  description: "面向计算机专业学生的顶会 Best Paper 阅读方法与 50 分钟报告设计。",
+  title: "如何读懂一篇计算机论文",
+  description: "面向计算机系硕士新生的论文阅读方法：为什么读、按需求选择读法，以及如何精读。",
   openGraph: {
-    title: "如何读懂并讲清一篇计算机论文",
-    description: "顶会 Best Paper 阅读方法与 50 分钟报告设计",
+    title: "如何读懂一篇计算机论文",
+    description: "面向计算机系硕士新生的论文阅读方法",
     type: "website",
     locale: "zh_CN",
     images: [
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
         url: previewImage,
         width: 1731,
         height: 909,
-        alt: "计算机论文阅读与报告的技术工作台",
+        alt: "计算机论文阅读方法",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "如何读懂并讲清一篇计算机论文",
-    description: "顶会 Best Paper 阅读方法与 50 分钟报告设计",
+    title: "如何读懂一篇计算机论文",
+    description: "面向计算机系硕士新生的论文阅读方法",
     images: [previewImage],
   },
   icons: {
