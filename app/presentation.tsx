@@ -29,6 +29,21 @@ const PaperKeyword = ({
   tone: "blue" | "orange" | "green";
 }) => <mark className={`paper-keyword ${tone}`}>{children}</mark>;
 
+const PaperSourceRow = ({
+  children,
+  label,
+  tone,
+}: {
+  children: ReactNode;
+  label: string;
+  tone: "context" | "problem" | "method" | "evidence";
+}) => (
+  <div className={`paper-source-row ${tone}`}>
+    <span>{label}</span>
+    <p lang="en">{children}</p>
+  </div>
+);
+
 const Arrow = () => (
   <span className="flow-arrow" aria-hidden="true">→</span>
 );
@@ -347,60 +362,56 @@ const slides: SlideSpec[] = [
   },
   {
     section: "第二部分｜第一遍阅读示例：AlayaDB",
-    title: "2. 摘要：填出“问题—方法—证据”",
+    title: "2. 摘要：在原文中标出问题、方法与证据",
     body: (
       <div className="alaya-abstract-reading">
-        <div className="alaya-abstract-grid">
-          <div>
-            <span>问题 / 目标</span>
-            <p className="paper-clue" lang="en">“fewer hardware resources” + “higher generation quality”</p>
-            <p>面对不同 SLO，希望同时减少硬件开销并保持生成质量。</p>
-          </div>
-          <div>
-            <span>核心方法</span>
-            <p className="paper-clue" lang="en">“decouples the KV cache and attention computation”</p>
-            <p>把 KV cache 与 attention 从推理系统中解耦，变成数据库查询处理。</p>
-          </div>
-          <div>
-            <span>证据类型</span>
-            <p className="paper-clue" lang="en">“two use cases” + “extensive experimental results”</p>
-            <p>用产业场景和基准实验说明系统有效。</p>
-          </div>
+        <div className="paper-source-stack abstract-source">
+          <PaperSourceRow label="研究对象" tone="context">
+            AlayaDB is a cutting-edge <strong>vector database system</strong> natively architected for <strong>efficient and effective long-context inference</strong> for Large Language Models (LLMs) at AlayaDB AI.
+          </PaperSourceRow>
+          <PaperSourceRow label="方法 ①" tone="method">
+            Specifically, it <strong>decouples the KV cache and attention computation from the LLM inference systems</strong>, and <strong>encapsulates them into a novel vector database system</strong>.
+          </PaperSourceRow>
+          <PaperSourceRow label="问题 / 效果" tone="problem">
+            For the Model as a Service providers (MaaS), AlayaDB <strong>consumes fewer hardware resources</strong> and <strong>offers higher generation quality</strong> for various workloads with different kinds of <strong>Service Level Objectives (SLOs)</strong>, when compared with the <strong>existing alternative solutions</strong> (e.g., KV cache disaggregation, retrieval-based sparse attention).
+          </PaperSourceRow>
+          <PaperSourceRow label="方法 ②" tone="method">
+            The crux of AlayaDB is that it <strong>abstracts the attention computation and cache management for LLM inference into a query processing procedure</strong>, and optimizes the performance via a <strong>native query optimizer</strong>.
+          </PaperSourceRow>
+          <PaperSourceRow label="证据" tone="evidence">
+            In this work, we demonstrate the effectiveness of AlayaDB via <strong>(i) two use cases from our industry partners</strong>, and <strong>(ii) extensive experimental results on LLM inference benchmarks</strong>.
+          </PaperSourceRow>
         </div>
         <div className="alaya-first-verdict">
-          <b>摘要后的一句话：</b>AlayaDB 把长上下文推理中的缓存与 attention，重写成一个数据库查询优化问题。
+          <b>读法提示：</b>摘要把“现有问题”藏在目标和比较对象里；下一步要到引言验证明确的 gap，并补齐 sparse attention、DIPR 与联合优化。
         </div>
       </div>
     ),
   },
   {
     section: "第二部分｜第一遍阅读示例：AlayaDB",
-    title: "3. 引言：定位“背景—路线—缺口—方案”",
+    title: "3. 引言：继续从原文补齐方法链",
     body: (
       <div className="alaya-intro-reading">
-        <div className="alaya-intro-chain">
-          <div>
-            <span>背景</span>
-            <p>长上下文推理同时关注延迟、生成质量和 GPU 显存。</p>
-          </div>
-          <Arrow />
-          <div>
-            <span>已有路线</span>
-            <p>耦合架构、KV cache 解耦、检索式稀疏 attention。</p>
-          </div>
-          <Arrow />
-          <div className="gap">
-            <span>关键缺口</span>
-            <p>已有系统难以同时优化三个指标。</p>
-          </div>
-          <Arrow />
-          <div>
-            <span>论文方案</span>
-            <p>新的解耦层次 + DIPR 查询 + 原生查询优化器。</p>
-          </div>
+        <div className="paper-source-stack intro-source">
+          <PaperSourceRow label="已有路线" tone="context">
+            They can be classified into three categories: <strong>(i) coupled architecture; (ii) KV cache disaggregation; and (iii) retrieval-based sparse attention</strong>.
+          </PaperSourceRow>
+          <PaperSourceRow label="明确的 gap" tone="problem">
+            Unfortunately, <strong>existing systems cannot simultaneously optimize the three aforementioned performance metrics</strong>, as we will elaborate in Section 3.
+          </PaperSourceRow>
+          <PaperSourceRow label="方法 ① 解耦" tone="method">
+            The core idea of AlayaDB is to <strong>decouple both KV cache and attention computation</strong> and to <strong>encapsulate them into a monolithic vector database</strong>.
+          </PaperSourceRow>
+          <PaperSourceRow label="方法 ② 稀疏计算" tone="method">
+            Secondly, it <strong>handles sparse attention computation as a vector search query</strong>. To improve the generation quality and reduce the memory consumption simultaneously, AlayaDB defines a novel query type, i.e., <strong>dynamic inner product range query (DIPR)</strong>, which overcomes the limitations of the traditional top-k query. To accelerate query processing, AlayaDB includes a <strong>native query optimizer</strong>, which selects the best execution plan for efficient vector search.
+          </PaperSourceRow>
+          <PaperSourceRow label="方法 ③ 联合优化" tone="method">
+            <strong>Co-optimization Opportunity.</strong> It sheds light on <strong>co-optimizing attention computation and KV cache management</strong> in a monolithic vector database together.
+          </PaperSourceRow>
         </div>
-        <div className="alaya-research-question">
-          <b>核心研究问题：</b>如何在满足不同工作负载 SLO 的同时，减少 GPU 显存并保持高生成质量？
+        <div className="alaya-method-chain">
+          <b>完整方法链：</b>解耦 KV cache 与 attention → 将 sparse attention 转为向量检索 → DIPR + query optimizer → 在向量数据库内联合优化 attention 与 cache management。
         </div>
       </div>
     ),

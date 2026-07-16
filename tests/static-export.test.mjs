@@ -50,8 +50,14 @@ test("exports a complete static presentation for GitHub Pages", async () => {
   assert.match(source, /Data Foundation/);
   assert.match(source, /Efficient and Effective/);
   assert.match(source, /Long-context LLM Inference/);
-  assert.match(source, /摘要：填出“问题—方法—证据”/);
-  assert.match(source, /引言：定位“背景—路线—缺口—方案”/);
+  assert.match(source, /摘要：在原文中标出问题、方法与证据/);
+  assert.match(source, /引言：继续从原文补齐方法链/);
+  assert.match(source, /existing systems cannot simultaneously optimize the three aforementioned performance metrics/);
+  assert.match(source, /handles sparse attention computation as a vector search query/);
+  assert.match(source, /dynamic inner product range query \(DIPR\)/);
+  assert.match(source, /co-optimizing attention computation and KV cache management/);
+  assert.doesNotMatch(source, /co-attention/i);
+  assert.doesNotMatch(source, /“fewer hardware resources” \+ “higher generation quality”/);
   assert.match(source, /结论：核对作者最终声称了什么/);
   assert.match(source, /图表：检查“系统结构—核心结果”/);
   assert.match(source, /alayadb-system-overview\.png/);
