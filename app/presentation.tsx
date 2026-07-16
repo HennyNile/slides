@@ -201,8 +201,8 @@ const slides: SlideSpec[] = [
           <p>找到重要、尚未充分解决，并且有可能开展的研究问题。</p>
         </div>
         <ol className="need-steps">
-          <li><span>1</span><p>围绕同一主题比较代表工作的设定、假设、方法和指标。</p></li>
-          <li><span>2</span><p>重点阅读局限、未来工作、失败案例和相互矛盾的结果。</p></li>
+          <li><span>1</span><p>围绕同一主题比较代表工作的场景（LLM推理、Agent）、假设（单机、分布式）、方法（启发式方法、学习型方法）和指标（精度、成本、效率）。</p></li>
+          <li><span>2</span><p>重点阅读局限、未来工作、失败案例和相互矛盾的结果，找空白场景、空白假设、新的方法、新的指标。</p></li>
           <li><span>3</span><p>区分真正的研究缺口与单纯缺少实验，并评估可行性。</p></li>
         </ol>
         <div className="need-output">
@@ -275,7 +275,7 @@ const slides: SlideSpec[] = [
           <h2>完整精读</h2>
           <div className="mode-time">数小时到数天</div>
           <p>重建论证、检查证据、理解边界。</p>
-          <b>产物：完整论文卡与独立判断</b>
+          <b>产物：一页精读总结与独立判断</b>
         </div>
       </div>
     ),
@@ -474,7 +474,7 @@ const slides: SlideSpec[] = [
   },
   {
     section: "第三部分｜步骤六",
-    title: "用一页论文卡结束精读",
+    title: "完成一页精读总结",
     body: (
       <div className="paper-card">
         <div><span>问题</span><p>论文解决什么重要问题？</p></div>
@@ -516,7 +516,7 @@ const slides: SlideSpec[] = [
         <div>
           <span>第三轮 · 1–2 小时或更久</span>
           <h2>形成判断</h2>
-          <p>核查相关工作、边界与复现信息，完成一页论文卡。</p>
+          <p>核查相关工作、边界与复现信息，完成一页精读总结。</p>
         </div>
         <div className="workflow-note">
           时间不是硬指标。理论证明、复杂系统和陌生方向通常需要多次回读。

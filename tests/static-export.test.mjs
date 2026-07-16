@@ -45,6 +45,8 @@ test("exports a complete static presentation for GitHub Pages", async () => {
   assert.match(source, /研究方向进展、takeaways、复现方案/);
   assert.match(source, /这篇论文能否作为我的 Baseline/);
   assert.match(source, /精读的核心：重建完整论证/);
+  assert.match(source, /一页精读总结与独立判断/);
+  assert.doesNotMatch(source, /论文卡/);
   assert.match(source, /ArrowRight/);
   assert.match(source, /requestFullscreen/);
   assert.match(source, /slide-/);
