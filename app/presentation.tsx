@@ -134,7 +134,7 @@ const slides: SlideSpec[] = [
         <div>
           <span>1</span>
           <h2>我要回答什么问题？</h2>
-          <p>了解方向、解决问题、学习方法，还是评价工作？</p>
+          <p>了解方向、寻找问题、寻找 Baseline，还是审稿？</p>
         </div>
         <div>
           <span>2</span>
@@ -144,11 +144,11 @@ const slides: SlideSpec[] = [
         <div>
           <span>3</span>
           <h2>读完要留下什么？</h2>
-          <p>方向地图、可用结论、复现方案，还是完整论文卡？</p>
+          <p>研究方向进展、takeaways、复现方案，或者审稿意见。</p>
         </div>
         <div className="task-example">
-          <b>一个具体任务：</b>
-          “用 60 分钟判断这项方法能否用于我的数据，并记录可用条件和主要风险。”
+          <b>把阅读目的写成一句可执行的问题，例如：</b>
+          “这篇论文能否作为我的 Baseline？我需要比较哪些设定和指标？”
         </div>
       </div>
     ),
