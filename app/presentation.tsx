@@ -175,6 +175,26 @@ const slides: SlideSpec[] = [
     ),
   },
   {
+    section: "第二部分｜需求一示例",
+    title: "领域地图示例：人工智能赋能数据库",
+    className: "field-map-slide",
+    body: (
+      <a
+        className="field-map-frame"
+        href="field-map-ai4db.pdf"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="打开人工智能赋能数据库领域地图原始 PDF"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="field-map-ai4db.png"
+          alt="人工智能赋能数据库领域地图，包含内核组件智能化替代、数据库自动化治理和交互方式智能化优化等分支"
+        />
+      </a>
+    ),
+  },
+  {
     section: "第二部分｜需求二",
     title: "寻找科研问题：从差异和边界中找空白",
     body: (
