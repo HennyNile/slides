@@ -134,7 +134,7 @@ const slides: SlideSpec[] = [
         <div>
           <span>1</span>
           <h2>我要回答什么问题？</h2>
-          <p>了解方向、寻找问题、寻找 Baseline，还是审稿？</p>
+          <p>了解研究方向、寻找科研问题、复现论文 Baseline，还是审稿？</p>
         </div>
         <div>
           <span>2</span>
@@ -155,84 +155,84 @@ const slides: SlideSpec[] = [
   },
   {
     section: "第二部分｜需求一",
-    title: "快速了解一个研究方向：先建立地图",
+    title: "了解研究方向：先建立领域地图",
     body: (
       <div className="need-layout">
         <div className="need-purpose">
           <h2>目标</h2>
-          <p>知道领域在解决什么问题，以及有哪些主要技术路线。</p>
+          <p>快速回答这个方向在研究什么、发展到哪里、主要路线是什么。</p>
         </div>
         <ol className="need-steps">
-          <li><span>1</span><p>从综述、课程资料和近年顶会论文得到代表性列表。</p></li>
-          <li><span>2</span><p>只读标题、摘要、引言、结论和主要图表。</p></li>
-          <li><span>3</span><p>按“问题—方法—数据/场景”对论文分组。</p></li>
+          <li><span>1</span><p>从综述、经典工作和近年顶会论文得到代表性列表。</p></li>
+          <li><span>2</span><p>快速阅读标题、摘要、引言、结论和主要图表。</p></li>
+          <li><span>3</span><p>按“问题—方法—场景”分组，并梳理时间与技术脉络。</p></li>
         </ol>
         <div className="need-output">
           <b>阅读产物</b>
-          <p>一页方向地图：主要问题、代表方法、关键论文和空白点。</p>
+          <p>方向进展总结：核心问题、代表方法、最新趋势与主要空白。</p>
         </div>
       </div>
     ),
   },
   {
     section: "第二部分｜需求二",
-    title: "为一个具体问题找答案：沿文献链阅读",
+    title: "寻找科研问题：从差异和边界中找空白",
     body: (
       <div className="need-layout">
         <div className="need-purpose">
           <h2>目标</h2>
-          <p>找到与当前问题直接相关、可以使用或比较的结论。</p>
+          <p>找到重要、尚未充分解决，并且有可能开展的研究问题。</p>
         </div>
         <ol className="need-steps">
-          <li><span>1</span><p>把问题拆成任务、约束、数据和评价指标等关键词。</p></li>
-          <li><span>2</span><p>从一篇相关论文向前追参考文献、向后看引用它的工作。</p></li>
-          <li><span>3</span><p>按问题跳读相关章节，不必平均阅读整篇论文。</p></li>
+          <li><span>1</span><p>围绕同一主题比较代表工作的设定、假设、方法和指标。</p></li>
+          <li><span>2</span><p>重点阅读局限、未来工作、失败案例和相互矛盾的结果。</p></li>
+          <li><span>3</span><p>区分真正的研究缺口与单纯缺少实验，并评估可行性。</p></li>
         </ol>
         <div className="need-output">
           <b>阅读产物</b>
-          <p>文献对比表：每篇论文的结论、适用条件、证据和不足。</p>
+          <p>候选问题清单：重要性、现有缺口、初步证据与可行路径。</p>
         </div>
       </div>
     ),
   },
   {
     section: "第二部分｜需求三",
-    title: "学习一个方法并准备复现：围绕实现细节阅读",
+    title: "复现论文 Baseline：围绕可复现性阅读",
     body: (
       <div className="need-layout">
         <div className="need-purpose">
           <h2>目标</h2>
-          <p>能够解释方法如何运行，并判断自己能否实现或复用。</p>
+          <p>在一致设定下复现可信结果，为自己的实验提供参照。</p>
         </div>
         <ol className="need-steps">
-          <li><span>1</span><p>先确认输入、输出、数据格式和问题设定。</p></li>
-          <li><span>2</span><p>沿架构图、伪代码或公式重建完整执行流程。</p></li>
-          <li><span>3</span><p>结合代码、附录和实验设置补齐参数、资源与工程细节。</p></li>
+          <li><span>1</span><p>锁定论文、官方代码、数据版本、评价脚本和目标结果。</p></li>
+          <li><span>2</span><p>对齐预处理、模型配置、超参数、随机种子和运行流程。</p></li>
+          <li><span>3</span><p>记录环境与资源，对比复现值和论文值并分析差异。</p></li>
         </ol>
         <div className="need-output">
           <b>阅读产物</b>
-          <p>流程图、关键配置、资源需求，以及仍然缺失的信息。</p>
+          <p>复现记录：代码版本、环境、配置、预期结果、实际结果与偏差。</p>
         </div>
       </div>
     ),
   },
   {
     section: "第二部分｜需求四",
-    title: "判断一篇论文是否可信：围绕主张和证据阅读",
+    title: "审稿：按评审问题系统阅读",
     body: (
       <div className="need-layout">
         <div className="need-purpose">
           <h2>目标</h2>
-          <p>判断作者的结论有多可靠，而不是只确认论文“做了什么”。</p>
+          <p>判断论文的创新性、正确性、清晰度和实验证据是否充分。</p>
         </div>
         <ol className="need-steps">
-          <li><span>1</span><p>把核心贡献改写成可以被实验或证明检验的主张。</p></li>
-          <li><span>2</span><p>检查基线、对照变量、数据、误差和评价指标是否合理。</p></li>
-          <li><span>3</span><p>主动寻找失败案例、隐含假设和无法覆盖的场景。</p></li>
+          <li><span>1</span><p>用自己的话概括问题、贡献和核心主张，并定位相关工作。</p></li>
+          <li><span>2</span><p>检查方法、实验设计、Baseline、指标、统计和消融。</p></li>
+          <li><span>3</span><p>区分致命问题、可修正问题和表达问题，整理作者疑问。</p></li>
         </ol>
         <div className="need-output">
           <b>阅读产物</b>
-          <p>判断结论：哪些主张被支持、支持到什么程度、哪里仍存疑。</p>
+          <p>结构化审稿意见：摘要、优点、缺点、问题与总体评价。</p>
         </div>
       </div>
     ),
