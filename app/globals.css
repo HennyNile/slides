@@ -384,15 +384,21 @@ button {
 .reason-grid {
   display: grid;
   height: 100%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.1cqw;
 }
 
 .reason-grid > div {
   position: relative;
+  grid-column: span 2;
   padding: 1.35cqw 1.7cqw 1.35cqw 5.1cqw;
   border: 1px solid var(--line);
   background: #fbfcfd;
+}
+
+.reason-grid > div:nth-child(4),
+.reason-grid > div:nth-child(5) {
+  grid-column: span 3;
 }
 
 .reason-grid span {
@@ -406,14 +412,14 @@ button {
 
 .reason-grid h2 {
   margin: 0 0 0.55cqw;
-  font-size: 2cqw;
+  font-size: 1.75cqw;
   font-weight: 500;
 }
 
 .reason-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.4cqw;
+  font-size: 1.3cqw;
 }
 
 /* Define task */

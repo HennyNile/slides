@@ -30,6 +30,8 @@ test("exports a complete static presentation for GitHub Pages", async () => {
 
   const scripts = await collectJavaScript(new URL("out/_next/", root));
   const source = (await Promise.all(scripts.map((file) => readFile(file, "utf8")))).join("\n");
+  assert.match(source, /写作引用 \/ Baseline/);
+  assert.match(source, /审稿与评价/);
   assert.match(source, /先定义阅读任务，再打开 PDF/);
   assert.match(source, /精读的核心：重建完整论证/);
   assert.match(source, /ArrowRight/);
