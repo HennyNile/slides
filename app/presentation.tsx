@@ -21,6 +21,14 @@ const Accent = ({ children }: { children: ReactNode }) => (
   <span className="accent">{children}</span>
 );
 
+const PaperKeyword = ({
+  children,
+  tone,
+}: {
+  children: ReactNode;
+  tone: "blue" | "orange" | "green";
+}) => <mark className={`paper-keyword ${tone}`}>{children}</mark>;
+
 const Arrow = () => (
   <span className="flow-arrow" aria-hidden="true">→</span>
 );
@@ -295,12 +303,172 @@ const slides: SlideSpec[] = [
         <div className="first-pass-bottom">
           <div>
             <h2>读完必须能说清</h2>
-            <p>问题是什么？核心想法是什么？主要结果是什么？</p>
+            <p>问题是什么？核心想法是什么？主要结果与边界是什么？</p>
           </div>
           <div>
             <h2>继续精读的条件</h2>
             <p>与任务高度相关，或结论重要但仍有关键疑问。</p>
           </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    section: "第二部分｜第一遍阅读示例：AlayaDB",
+    title: "1. 标题：拆出研究对象、目标与定位",
+    body: (
+      <div className="alaya-title-reading">
+        <div className="alaya-paper-title" lang="en">
+          <b>AlayaDB:</b> The <PaperKeyword tone="blue">Data Foundation</PaperKeyword>
+          <br />
+          for <PaperKeyword tone="orange">Efficient and Effective</PaperKeyword>
+          <br />
+          <PaperKeyword tone="green">Long-context LLM Inference</PaperKeyword>
+        </div>
+        <div className="alaya-title-decoding">
+          <div>
+            <span>研究对象</span>
+            <p>长上下文 LLM 推理</p>
+          </div>
+          <div>
+            <span>作者目标</span>
+            <p>同时追求效率与效果</p>
+          </div>
+          <div>
+            <span>可能定位</span>
+            <p>用数据系统承载推理基础设施</p>
+          </div>
+        </div>
+        <div className="alaya-first-verdict">
+          此时只形成一个待验证的假设：它可能用数据库方法同时优化长上下文推理的效率与效果。
+        </div>
+      </div>
+    ),
+  },
+  {
+    section: "第二部分｜第一遍阅读示例：AlayaDB",
+    title: "2. 摘要：填出“问题—方法—证据”",
+    body: (
+      <div className="alaya-abstract-reading">
+        <div className="alaya-abstract-grid">
+          <div>
+            <span>问题 / 目标</span>
+            <p className="paper-clue" lang="en">“fewer hardware resources” + “higher generation quality”</p>
+            <p>面对不同 SLO，希望同时减少硬件开销并保持生成质量。</p>
+          </div>
+          <div>
+            <span>核心方法</span>
+            <p className="paper-clue" lang="en">“decouples the KV cache and attention computation”</p>
+            <p>把 KV cache 与 attention 从推理系统中解耦，变成数据库查询处理。</p>
+          </div>
+          <div>
+            <span>证据类型</span>
+            <p className="paper-clue" lang="en">“two use cases” + “extensive experimental results”</p>
+            <p>用产业场景和基准实验说明系统有效。</p>
+          </div>
+        </div>
+        <div className="alaya-first-verdict">
+          <b>摘要后的一句话：</b>AlayaDB 把长上下文推理中的缓存与 attention，重写成一个数据库查询优化问题。
+        </div>
+      </div>
+    ),
+  },
+  {
+    section: "第二部分｜第一遍阅读示例：AlayaDB",
+    title: "3. 引言：定位“背景—路线—缺口—方案”",
+    body: (
+      <div className="alaya-intro-reading">
+        <div className="alaya-intro-chain">
+          <div>
+            <span>背景</span>
+            <p>长上下文推理同时关注延迟、生成质量和 GPU 显存。</p>
+          </div>
+          <Arrow />
+          <div>
+            <span>已有路线</span>
+            <p>耦合架构、KV cache 解耦、检索式稀疏 attention。</p>
+          </div>
+          <Arrow />
+          <div className="gap">
+            <span>关键缺口</span>
+            <p>已有系统难以同时优化三个指标。</p>
+          </div>
+          <Arrow />
+          <div>
+            <span>论文方案</span>
+            <p>新的解耦层次 + DIPR 查询 + 原生查询优化器。</p>
+          </div>
+        </div>
+        <div className="alaya-research-question">
+          <b>核心研究问题：</b>如何在满足不同工作负载 SLO 的同时，减少 GPU 显存并保持高生成质量？
+        </div>
+      </div>
+    ),
+  },
+  {
+    section: "第二部分｜第一遍阅读示例：AlayaDB",
+    title: "4. 结论：核对作者最终声称了什么",
+    body: (
+      <div className="alaya-conclusion-reading">
+        <div className="alaya-conclusion-grid">
+          <div>
+            <h2>作者最终声称</h2>
+            <ul>
+              <li>同时解耦 KV cache 与 attention 计算</li>
+              <li>在一个向量数据库中联合优化二者</li>
+              <li>满足 SLO，并兼顾资源消耗与生成质量</li>
+            </ul>
+          </div>
+          <div>
+            <h2>作者明确留下</h2>
+            <ul>
+              <li>分布式推理与更多并行策略</li>
+              <li>支持 vLLM、SGLang 等更多推理引擎</li>
+              <li>更多查询、存储层次与异构硬件优化</li>
+            </ul>
+          </div>
+        </div>
+        <div className="alaya-first-verdict">
+          <b>第一遍后的边界判断：</b>论文完成了当前架构与实验验证，但分布式能力、引擎适配和硬件泛化仍待后续工作。
+        </div>
+      </div>
+    ),
+  },
+  {
+    section: "第二部分｜第一遍阅读示例：AlayaDB",
+    title: "5. 图表：检查“系统结构—核心结果”",
+    body: (
+      <div className="alaya-figure-reading">
+        <div className="alaya-figure-grid">
+          <figure>
+            <div className="alaya-figure-frame architecture">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="alayadb-system-overview.png"
+                alt="AlayaDB 系统总览图，由用户接口、查询处理引擎和向量存储引擎三层组成"
+              />
+            </div>
+            <figcaption>
+              <b>Figure 3 · 系统结构</b>
+              <span>三层架构与摘要中的“查询处理”主张一致。</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <div className="alaya-figure-frame result">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="alayadb-quality-memory.png"
+                alt="AlayaDB 论文 Figure 9，比较 DIPRS 与多种方法的生成质量和 GPU 显存使用量"
+              />
+            </div>
+            <figcaption>
+              <b>Figure 9 · 核心结果</b>
+              <span>DIPRS 在示例任务中处于更高质量、较低显存区域。</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div className="alaya-figure-note">
+          第一遍只检查图是否支持摘要与结论；实验是否公平、结论是否充分，留到精读时再判断。
         </div>
       </div>
     ),

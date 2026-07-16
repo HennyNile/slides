@@ -28,6 +28,8 @@ test("exports a complete static presentation for GitHub Pages", async () => {
   await access(new URL("out/og-paper-reading.png", root));
   await access(new URL("out/field-map-ai4db.png", root));
   await access(new URL("out/field-map-ai4db.pdf", root));
+  await access(new URL("out/alayadb-system-overview.png", root));
+  await access(new URL("out/alayadb-quality-memory.png", root));
   await access(new URL("out/.nojekyll", root));
 
   const scripts = await collectJavaScript(new URL("out/_next/", root));
@@ -44,6 +46,16 @@ test("exports a complete static presentation for GitHub Pages", async () => {
   assert.match(source, /审稿：按评审问题系统阅读/);
   assert.match(source, /研究方向进展、takeaways、复现方案/);
   assert.match(source, /这篇论文能否作为我的 Baseline/);
+  assert.match(source, /AlayaDB:/);
+  assert.match(source, /Data Foundation/);
+  assert.match(source, /Efficient and Effective/);
+  assert.match(source, /Long-context LLM Inference/);
+  assert.match(source, /摘要：填出“问题—方法—证据”/);
+  assert.match(source, /引言：定位“背景—路线—缺口—方案”/);
+  assert.match(source, /结论：核对作者最终声称了什么/);
+  assert.match(source, /图表：检查“系统结构—核心结果”/);
+  assert.match(source, /alayadb-system-overview\.png/);
+  assert.match(source, /alayadb-quality-memory\.png/);
   assert.match(source, /精读的核心：重建完整论证/);
   assert.match(source, /一页精读总结与独立判断/);
   assert.doesNotMatch(source, /论文卡/);

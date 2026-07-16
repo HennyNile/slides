@@ -240,6 +240,29 @@ button {
   background: var(--pale-orange) !important;
 }
 
+.paper-keyword {
+  padding: 0 0.16em;
+  color: inherit;
+  background: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.paper-keyword.blue {
+  color: #315fae;
+  background: var(--pale-blue);
+}
+
+.paper-keyword.orange {
+  color: #a74d00;
+  background: var(--pale-orange);
+}
+
+.paper-keyword.green {
+  color: #24713a;
+  background: var(--pale-green);
+}
+
 /* Cover */
 .cover-slide {
   background:
@@ -709,6 +732,232 @@ button {
 .first-pass-bottom p {
   margin: 0;
   font-size: 1.42cqw;
+}
+
+/* AlayaDB first-pass example */
+.alaya-title-reading,
+.alaya-abstract-reading,
+.alaya-intro-reading,
+.alaya-conclusion-reading,
+.alaya-figure-reading {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr auto;
+  gap: 1.1cqw;
+}
+
+.alaya-paper-title {
+  align-self: center;
+  padding: 1.2cqw 1.6cqw;
+  border-left: 0.42cqw solid var(--teal);
+  color: #20252a;
+  background: #fbfcfd;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.42cqw;
+  line-height: 1.35;
+}
+
+.alaya-paper-title b {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.alaya-title-reading {
+  grid-template-rows: auto 1fr auto;
+}
+
+.alaya-title-decoding {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1cqw;
+}
+
+.alaya-title-decoding > div {
+  padding: 1cqw 1.2cqw;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.alaya-title-decoding span,
+.alaya-abstract-grid span {
+  color: var(--teal);
+  font-size: 1.28cqw;
+  font-weight: 700;
+}
+
+.alaya-title-decoding p {
+  margin: 0.55cqw 0 0;
+  font-size: 1.48cqw;
+}
+
+.alaya-first-verdict,
+.alaya-research-question,
+.alaya-figure-note {
+  padding: 0.85cqw 1.2cqw;
+  border-left: 0.35cqw solid var(--orange);
+  background: var(--pale-orange);
+  font-size: 1.34cqw;
+  text-align: center;
+}
+
+.alaya-abstract-grid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1cqw;
+}
+
+.alaya-abstract-grid > div {
+  padding: 1.2cqw 1.35cqw;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+}
+
+.alaya-abstract-grid > div:nth-child(2) {
+  border-color: var(--orange);
+  background: #fffaf5;
+}
+
+.alaya-abstract-grid p {
+  margin: 0.8cqw 0 0;
+  font-size: 1.31cqw;
+}
+
+.alaya-abstract-grid .paper-clue {
+  min-height: 4.1cqw;
+  color: #315fae;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.31cqw;
+  font-weight: 700;
+  line-height: 1.38;
+}
+
+.alaya-intro-chain {
+  display: grid;
+  min-height: 0;
+  align-items: stretch;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 0.55cqw;
+}
+
+.alaya-intro-chain > div {
+  display: flex;
+  justify-content: center;
+  padding: 1.2cqw 1.05cqw;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+  flex-direction: column;
+}
+
+.alaya-intro-chain > div.gap {
+  border-color: var(--orange);
+  background: var(--pale-orange);
+}
+
+.alaya-intro-chain span {
+  color: var(--teal);
+  font-size: 1.42cqw;
+  font-weight: 700;
+}
+
+.alaya-intro-chain p {
+  margin: 1.05cqw 0 0;
+  color: var(--muted);
+  font-size: 1.28cqw;
+}
+
+.alaya-research-question {
+  border-left-color: var(--red);
+  background: var(--pale-red);
+}
+
+.alaya-conclusion-grid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2cqw;
+}
+
+.alaya-conclusion-grid > div {
+  padding: 1.3cqw 1.6cqw;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+}
+
+.alaya-conclusion-grid > div:first-child {
+  border-color: var(--green);
+  background: var(--pale-green);
+}
+
+.alaya-conclusion-grid h2 {
+  margin: 0 0 1cqw;
+  font-size: 1.82cqw;
+  font-weight: 500;
+}
+
+.alaya-conclusion-grid ul {
+  display: grid;
+  margin: 0;
+  padding-left: 1.3em;
+  gap: 0.75cqw;
+}
+
+.alaya-conclusion-grid li {
+  font-size: 1.36cqw;
+}
+
+.alaya-figure-reading {
+  min-height: 0;
+}
+
+.alaya-figure-grid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2cqw;
+}
+
+.alaya-figure-grid figure {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0.8cqw;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+  grid-template-rows: 1fr auto;
+  gap: 0.65cqw;
+}
+
+.alaya-figure-frame {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+}
+
+.alaya-figure-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.alaya-figure-grid figcaption {
+  display: grid;
+  gap: 0.3cqw;
+}
+
+.alaya-figure-grid figcaption b {
+  color: var(--teal);
+  font-size: 1.4cqw;
+}
+
+.alaya-figure-grid figcaption span {
+  font-size: 1.25cqw;
 }
 
 /* Paper types */
