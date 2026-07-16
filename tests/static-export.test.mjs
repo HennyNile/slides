@@ -38,6 +38,7 @@ test("exports a complete static presentation for GitHub Pages", async () => {
   assert.match(source, /了解研究方向、寻找科研问题、复现论文 Baseline/);
   assert.match(source, /领域地图示例：人工智能赋能数据库/);
   assert.match(source, /field-map-ai4db\.png/);
+  assert.doesNotMatch(source, /href:\"field-map-ai4db\.pdf\"/);
   assert.match(source, /寻找科研问题：从差异和边界中找空白/);
   assert.match(source, /复现论文 Baseline：围绕可复现性阅读/);
   assert.match(source, /审稿：按评审问题系统阅读/);
