@@ -29,15 +29,197 @@ body {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   color: var(--ink);
-  background: var(--shell);
+  background: #eef1f2;
   font-family: Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 button {
   color: inherit;
   font: inherit;
+}
+
+/* Slides catalog */
+.catalog-page {
+  min-height: 100dvh;
+  padding: 54px clamp(22px, 6vw, 92px) 38px;
+  background:
+    linear-gradient(90deg, transparent 0 78%, rgba(237, 243, 255, 0.62) 78% 100%),
+    #f7f8f8;
+}
+
+.catalog-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.catalog-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 26px;
+  border-bottom: 5px solid var(--teal);
+}
+
+.catalog-header > div {
+  display: grid;
+  gap: 8px;
+}
+
+.catalog-header h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(50px, 7vw, 92px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.catalog-header p {
+  margin: 0;
+  color: var(--teal);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+}
+
+.catalog-header > span {
+  padding: 8px 12px;
+  border: 1px solid var(--orange);
+  color: #9e4700;
+  background: var(--pale-orange);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.catalog-introduction {
+  display: grid;
+  margin: 42px 0 26px;
+  grid-template-columns: minmax(210px, 0.35fr) 1fr;
+  gap: 36px;
+}
+
+.catalog-introduction h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 500;
+}
+
+.catalog-introduction p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.deck-catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+  gap: 24px;
+}
+
+.deck-card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  color: inherit;
+  background: #fff;
+  grid-template-columns: minmax(250px, 0.95fr) minmax(300px, 1.05fr);
+  text-decoration: none;
+  box-shadow: 0 12px 36px rgba(18, 63, 69, 0.08);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.deck-card:hover,
+.deck-card:focus-visible {
+  border-color: var(--orange);
+  outline: none;
+  box-shadow: 0 18px 44px rgba(18, 63, 69, 0.14);
+  transform: translateY(-3px);
+}
+
+.deck-thumbnail {
+  min-height: 310px;
+  overflow: hidden;
+  background: #e8edef;
+}
+
+.deck-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.deck-card-copy {
+  display: flex;
+  min-width: 0;
+  padding: 28px 30px;
+  flex-direction: column;
+}
+
+.deck-card-meta {
+  display: flex;
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 700;
+  gap: 16px;
+}
+
+.deck-card-copy h3 {
+  margin: 22px 0 13px;
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+}
+
+.deck-card-copy > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.deck-topics {
+  display: flex;
+  margin-top: 22px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.deck-topics span {
+  padding: 6px 9px;
+  color: #315fae;
+  background: var(--pale-blue);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.deck-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 24px;
+  font-size: 15px;
+}
+
+.deck-card-footer span {
+  color: var(--muted);
+}
+
+.deck-card-footer b {
+  color: #a74d00;
+}
+
+.catalog-footer {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: #7a848b;
+  font-size: 14px;
 }
 
 .presentation-shell {
@@ -101,6 +283,27 @@ button {
 
 .keyboard-hint {
   letter-spacing: 0.06em;
+}
+
+.presentation-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.deck-catalog-link {
+  padding: 5px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #dce4e8;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.deck-catalog-link:hover,
+.deck-catalog-link:focus-visible {
+  border-color: var(--orange);
+  color: #fff;
+  outline: none;
 }
 
 .slide-stage {
@@ -299,9 +502,21 @@ button {
 }
 
 .cover-meta {
+  display: flex;
   margin-top: 3.2cqw;
   color: #6d767d;
-  font-size: 1.3cqw;
+  flex-direction: column;
+  gap: 0.25cqw;
+}
+
+.cover-meta b {
+  color: var(--teal);
+  font-size: 1.55cqw;
+  font-weight: 700;
+}
+
+.cover-meta span {
+  font-size: 1.25cqw;
 }
 
 .cover-page {
@@ -1676,9 +1891,19 @@ button {
 }
 
 @media (max-width: 760px) {
+  .catalog-page { padding: 34px 16px 28px; }
+  .catalog-header { align-items: flex-start; flex-direction: column; gap: 22px; }
+  .catalog-introduction { margin-top: 32px; grid-template-columns: 1fr; gap: 12px; }
+  .catalog-introduction p { font-size: 16px; }
+  .deck-card { grid-template-columns: 1fr; }
+  .deck-thumbnail { min-height: 0; aspect-ratio: 16 / 9; }
+  .deck-card-copy { padding: 24px 22px; }
+  .deck-card-copy > p { font-size: 16px; }
   .presentation-shell { gap: 7px; }
   .presentation-topbar { height: 34px; }
   .keyboard-hint { display: none; }
+  .presentation-topbar-actions { gap: 0; }
+  .deck-catalog-link { padding: 4px 7px; font-size: 9px; }
   .deck-identity b { font-size: 11px; }
   .deck-identity small { font-size: 9px; }
   .deck-mark { width: 28px; height: 28px; font-size: 10px; }

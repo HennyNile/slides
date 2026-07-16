@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "python3 -m http.server 3000 -d out",
     "test": "npm run build && node --test tests/static-export.test.mjs",
-    "lint": "eslint app next.config.ts tests --ignore-pattern out --ignore-pattern .next --ignore-pattern dist"
+    "lint": "eslint app components decks lib next.config.ts tests --ignore-pattern out --ignore-pattern .next --ignore-pattern dist"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -1,16 +1,48 @@
-# 如何读懂一篇计算机论文：网页演示
+# 李奇隆的 Slides
 
-这是一个 29 页、16:9 的网页演示，面向计算机系新入学的硕士研究生，主题是如何阅读计算机论文。
+这个仓库用于集中管理和发布李奇隆制作的网页演示文稿。所有演示共用翻页、全屏、总览和触控操作，但拥有各自独立的 URL、内容、介绍与静态资源。
 
-内容按三部分组织：
+## 在线目录
 
-1. 为什么读论文；
-2. 不同阅读需求以及对应的阅读方式；
-3. 如何完整精读一篇论文。
+[打开 Slides 目录](https://hennynile.github.io/slides/)
 
-顶会 Best Paper 与 50 分钟分享仅作为最后的后续实践安排，不是本演示的主体。
+## 演示文稿
 
-“第一遍阅读”部分以 AlayaDB 论文为例，用标题、摘要、引言、结论和关键图表演示如何建立全局理解。
+### 如何读懂一篇计算机论文
+
+<a href="https://hennynile.github.io/slides/how-to-read-paper/">
+  <img src="https://hennynile.github.io/slides/decks/how-to-read-paper/thumbnail.png" alt="如何读懂一篇计算机论文缩略图" width="720">
+</a>
+
+- 作者：李奇隆
+- 页数：29 页，16:9
+- URL：[https://hennynile.github.io/slides/how-to-read-paper/](https://hennynile.github.io/slides/how-to-read-paper/)
+- 适用对象：计算机系新入学的硕士研究生
+- 介绍：从为什么读论文出发，区分了解方向、寻找问题、复现 Baseline 和审稿等阅读需求，并进一步说明如何完整精读一篇计算机论文。“第一遍阅读”部分以 AlayaDB 为例，用论文标题、摘要、引言、结论和关键图表演示如何建立全局理解。顶会 Best Paper 与 50 分钟分享仅作为后续实践安排，不是演示主体。
+
+## 仓库结构
+
+```text
+app/
+├── page.tsx                 # Slides 目录页
+└── [slug]/page.tsx          # 每份演示的独立地址
+components/
+└── deck-player.tsx          # 共用的翻页、全屏和总览播放器
+decks/
+└── how-to-read-paper/       # 当前演示的正文
+lib/
+└── decks.ts                 # 演示标题、介绍、缩略图等元数据
+public/decks/
+└── how-to-read-paper/       # 当前演示使用的图片与 PDF
+```
+
+新增演示时，需要：
+
+1. 在 `decks/<slug>/` 中放置演示内容；
+2. 在 `public/decks/<slug>/` 中放置缩略图与其他资源；
+3. 在 `lib/decks.ts` 中登记标题、作者、介绍和页数；
+4. 在 `app/[slug]/page.tsx` 中注册对应演示组件；
+5. 在本 README 的“演示文稿”部分补充 URL、缩略图和介绍。
 
 ## 本地运行
 
@@ -21,7 +53,8 @@ npm install
 npm run dev
 ```
 
-打开 `http://localhost:3000/`。
+- Slides 目录：`http://localhost:3000/`
+- 当前演示：`http://localhost:3000/how-to-read-paper/`
 
 ## 演示操作
 
@@ -31,32 +64,17 @@ npm run dev
 - `O`：打开页码总览
 - `F`：进入或退出全屏
 - 手机或触控板：左右滑动翻页
-- 每一页都有独立地址，例如 `#slide-15`
+- 每一页都有独立地址，例如 `how-to-read-paper/#slide-15`
 
-## 内容与样式
+## 视觉风格
 
-- 演示正文：`app/presentation.tsx`
-- 全部视觉样式：`app/globals.css`
-- 页面元数据：`app/layout.tsx`
-- 分享预览图：`public/og-paper-reading.png`
+当前演示的视觉语言参考了 `../个人风格ppt/` 下的两份个人 PPT：白底、左对齐大标题、少量强调色、淡色技术框图，以及深青 / 橙色标识线。投影页采用大字号和低信息密度，避免装饰性口号与小字。
 
-视觉语言参考了 `../个人风格ppt/` 下的两份个人 PPT：白底、左对齐大标题、少量强调色、淡色技术框图，以及深青 / 橙色标识线。投影页采用大字号和低信息密度，避免装饰性口号与小字。
-
-## 本地检查
+## 检查与发布
 
 ```bash
 npm run lint
 npm test
 ```
 
-`npm run build` 会在 `out/` 生成完全静态的网页，可直接放到任意静态托管服务。
-
-## GitHub Pages
-
-项目已经包含 `.github/workflows/deploy-pages.yml`。把本目录推送到 GitHub 仓库的 `main` 分支后：
-
-1. 在仓库 `Settings → Pages` 中，把 Source 设为 `GitHub Actions`。
-2. 推送或手动运行 `Deploy GitHub Pages` 工作流。
-3. 工作流会构建 `out/` 并发布 Pages 地址。
-
-工作流采用 GitHub 官方 Pages actions，且会自动适配仓库子路径。
+`npm run build` 会在 `out/` 生成包含目录页和全部演示的静态站点。推送到 `main` 分支后，`.github/workflows/deploy-pages.yml` 会自动构建并更新 GitHub Pages。

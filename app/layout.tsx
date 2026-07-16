@@ -5,18 +5,21 @@ const [repositoryOwner = "", repositoryName = ""] = process.env.GITHUB_REPOSITOR
 const basePath = process.env.GITHUB_ACTIONS === "true" && repositoryName
   ? `/${repositoryName}`
   : "";
-const previewImage = `${basePath}/og-paper-reading.png`;
+const previewImage = "decks/how-to-read-paper/thumbnail.png";
 const metadataBase = process.env.GITHUB_ACTIONS === "true" && repositoryOwner && repositoryName
   ? new URL(`https://${repositoryOwner}.github.io/${repositoryName}/`)
   : new URL("http://localhost:3000/");
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "如何读懂一篇计算机论文",
-  description: "面向计算机系硕士新生的论文阅读方法：为什么读、按需求选择读法，以及如何精读。",
+  title: {
+    default: "李奇隆的 Slides",
+    template: "%s | 李奇隆的 Slides",
+  },
+  description: "李奇隆的网页演示文稿集合。每份演示提供独立地址、介绍与浏览器演示模式。",
   openGraph: {
-    title: "如何读懂一篇计算机论文",
-    description: "面向计算机系硕士新生的论文阅读方法",
+    title: "李奇隆的 Slides",
+    description: "网页演示文稿集合",
     type: "website",
     locale: "zh_CN",
     images: [
@@ -24,14 +27,14 @@ export const metadata: Metadata = {
         url: previewImage,
         width: 1731,
         height: 909,
-        alt: "计算机论文阅读方法",
+        alt: "李奇隆的 Slides",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "如何读懂一篇计算机论文",
-    description: "面向计算机系硕士新生的论文阅读方法",
+    title: "李奇隆的 Slides",
+    description: "网页演示文稿集合",
     images: [previewImage],
   },
   icons: {
